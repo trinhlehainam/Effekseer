@@ -21,7 +21,7 @@ struct VS_Output
 	float4 PosVS : SV_POSITION;
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
-	float4 PosP : TEXCOORD1;
+	float4 PosP : TEXCOORD4;
 };
 
 VS_Output main(const VS_Input Input)

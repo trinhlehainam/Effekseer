@@ -60,10 +60,6 @@ struct PS_Input
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
 
-	float4 PosP : TEXCOORD1;
-	float4 PosU : TEXCOORD2;
-	float4 PosR : TEXCOORD3;
-
 	float4 Alpha_Dist_UV : TEXCOORD4;
 	float4 Blend_Alpha_Dist_UV : TEXCOORD5;
 
@@ -72,6 +68,10 @@ struct PS_Input
 
 	// x - FlipbookRate, y - AlphaThreshold
 	float2 Others : TEXCOORD7;
+
+#ifndef DISABLED_SOFT_PARTICLE
+	float4 PosP : TEXCOORD8;
+#endif
 };
 
 #include "ad_common_ps.fx"
