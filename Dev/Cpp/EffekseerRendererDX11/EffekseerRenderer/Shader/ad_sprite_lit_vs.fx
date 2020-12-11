@@ -18,11 +18,11 @@ struct VS_Input
 struct VS_Output
 {
 	float4 PosVS : SV_POSITION;
-	linear centroid float4 VColor : COLOR;
+	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
 	float3 WorldN : TEXCOORD1;
-	float3 WorldT : TEXCOORD2;
-	float3 WorldB : TEXCOORD3;
+	float3 WorldB : TEXCOORD2;
+	float3 WorldT : TEXCOORD3;
 
 	float4 Alpha_Dist_UV : TEXCOORD4;
 	float4 Blend_Alpha_Dist_UV : TEXCOORD5;
@@ -59,9 +59,7 @@ VS_Output main(const VS_Input Input)
 
 	// UV
 	float2 uv1 = Input.UV1;
-	float2 uv2 = Input.UV1;
 	uv1.y = mUVInversed.x + mUVInversed.y * uv1.y;
-	uv2.y = mUVInversed.x + mUVInversed.y * uv2.y;
 
 	// NBT
 	Output.WorldN = worldNormal;
@@ -74,7 +72,7 @@ VS_Output main(const VS_Input Input)
 	cameraPos = cameraPos / cameraPos.w;
 	Output.PosVS = mul(mProj, cameraPos);
 
-	Output.VColor = Input.Color;
+	Output.Color = Input.Color;
 	Output.UV = uv1;
 
 	CalculateAndStoreAdvancedParameter(Input, Output);

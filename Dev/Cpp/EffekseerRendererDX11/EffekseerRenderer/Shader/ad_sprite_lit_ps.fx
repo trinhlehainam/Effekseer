@@ -2,11 +2,11 @@
 struct PS_Input
 {
 	float4 PosVS : SV_POSITION;
-	linear centroid float4 VColor : COLOR;
+	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
 	float3 WorldN : TEXCOORD1;
-	float3 WorldT : TEXCOORD2;
-	float3 WorldB : TEXCOORD3;
+	float3 WorldB : TEXCOORD2;
+	float3 WorldT : TEXCOORD3;
 
 	float4 Alpha_Dist_UV : TEXCOORD4;
 	float4 Blend_Alpha_Dist_UV : TEXCOORD5;
@@ -100,9 +100,9 @@ float4 main(const PS_Input Input)
 
 	diffuse = max(dot(fLightDirection.xyz, localNormal.xyz), 0.0);
 
-	float4 Output = _colorTex.Sample(sampler_colorTex, Input.UV + UVOffset) * Input.VColor;
+	float4 Output = _colorTex.Sample(sampler_colorTex, Input.UV + UVOffset) * Input.Color;
 
-	ApplyFlipbook(Output, _colorTex, sampler_colorTex, fFlipbookParameter, Input.VColor, advancedParam.FlipbookNextIndexUV + UVOffset, advancedParam.FlipbookRate);
+	ApplyFlipbook(Output, _colorTex, sampler_colorTex, fFlipbookParameter, Input.Color, advancedParam.FlipbookNextIndexUV + UVOffset, advancedParam.FlipbookRate);
 
 #ifndef DISABLED_SOFT_PARTICLE
 	// softparticle

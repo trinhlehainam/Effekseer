@@ -12,7 +12,7 @@ struct PS_Input
 	float4 PosVS : SV_POSITION;
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
-	float4 PosP : TEXCOORD1;
+	float4 PosP : TEXCOORD4;
 };
 
 struct FalloffParameter
