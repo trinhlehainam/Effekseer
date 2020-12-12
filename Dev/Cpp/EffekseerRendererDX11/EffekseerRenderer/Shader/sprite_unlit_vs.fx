@@ -9,7 +9,7 @@ cbuffer VS_ConstantBuffer : register(b0)
 	float4 mflipbookParameter; // x:enable, y:loopType, z:divideX, w:divideY
 }
 
-#ifdef LIGHTING
+#ifdef ENABLE_LIGHTING
 
 struct VS_Input
 {
@@ -38,7 +38,7 @@ struct VS_Output
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
 
-#ifdef LIGHTING
+#ifdef ENABLE_LIGHTING
 	float3 WorldN : TEXCOORD1;
 	float3 WorldB : TEXCOORD2;
 	float3 WorldT : TEXCOORD3;
@@ -52,14 +52,14 @@ VS_Output main(const VS_Input Input)
 	VS_Output Output = (VS_Output)0;
 	float3 worldPos = Input.Pos;
 
-#ifdef LIGHTING
+#ifdef ENABLE_LIGHTING
 	float3 worldNormal = (Input.Normal - float3(0.5, 0.5, 0.5)) * 2.0;
 	float3 worldTangent = (Input.Tangent - float3(0.5, 0.5, 0.5)) * 2.0;
 	float3 worldBinormal = cross(worldNormal, worldTangent);
 #endif
 
 	// UV
-#ifdef LIGHTING
+#ifdef ENABLE_LIGHTING
 	float2 uv1 = Input.UV1;
 #else
 	float2 uv1 = Input.UV;
@@ -67,7 +67,7 @@ VS_Output main(const VS_Input Input)
 	uv1.y = mUVInversed.x + mUVInversed.y * uv1.y;
 
 	// NBT
-#ifdef LIGHTING
+#ifdef ENABLE_LIGHTING
 	Output.WorldN = worldNormal;
 	Output.WorldB = worldBinormal;
 	Output.WorldT = worldTangent;
