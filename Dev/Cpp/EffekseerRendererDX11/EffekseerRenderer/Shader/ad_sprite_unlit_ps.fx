@@ -60,6 +60,12 @@ struct PS_Input
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
 
+#ifdef ENABLE_LIGHTING
+	float3 WorldN : TEXCOORD1;
+	float3 WorldB : TEXCOORD2;
+	float3 WorldT : TEXCOORD3;
+#endif
+
 	float4 Alpha_Dist_UV : TEXCOORD4;
 	float4 Blend_Alpha_Dist_UV : TEXCOORD5;
 
