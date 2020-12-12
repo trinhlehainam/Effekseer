@@ -1,4 +1,6 @@
+#include "model_unlit_ps.fx"
 
+/*
 Texture2D _colorTex : register(t0);
 SamplerState sampler_colorTex : register(s0);
 
@@ -82,3 +84,4 @@ float4 main(const PS_Input Input)
 
 	return Output;
 }
+*/

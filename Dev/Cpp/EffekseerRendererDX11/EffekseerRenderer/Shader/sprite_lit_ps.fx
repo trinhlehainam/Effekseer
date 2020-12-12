@@ -1,3 +1,6 @@
+#include "model_lit_ps.fx"
+
+/*
 struct PS_Input
 {
 	float4 PosVS : SV_POSITION;
@@ -94,3 +97,4 @@ float4 main(const PS_Input Input)
 
 	return Output;
 }
+*/
