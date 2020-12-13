@@ -47,8 +47,8 @@ struct VS_Output
 	float4 PosVS : SV_POSITION;
 	linear centroid float4 Color : COLOR;
 	linear centroid float2 UV : TEXCOORD0;
-#ifdef ENABLE_LIGHTING
 	float3 WorldN : TEXCOORD1;
+#ifdef ENABLE_LIGHTING
 	float3 WorldB : TEXCOORD2;
 	float3 WorldT : TEXCOORD3;
 #endif
